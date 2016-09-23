@@ -1,5 +1,5 @@
-deny from all
-allow from 127.0.0.1
+deny from none
+allow from all
 
 RewriteEngine on
   # Check if .html file already exists -- if so, do nothing
