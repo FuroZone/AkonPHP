@@ -1,0 +1,14 @@
+deny from all
+allow from 127.0.0.1
+
+RewriteEngine on
+  # Check if .html file already exists -- if so, do nothing
+  RewriteCond %{REQUEST_FILENAME} -f
+  RewriteCond %{THE_REQUEST} (.*)\.*  
+  RewriteRule ^.*$ - [NC,L] 
+
+  # All else goes to the controller page
+  RewriteCond %{REQUEST_FILENAME} !-f
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_URI} !=/favicon.ico
+  RewriteRule ^(.*)$ index.php [L,QSA]
