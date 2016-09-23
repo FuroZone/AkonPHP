@@ -4,6 +4,6 @@
     <title>404: Page Not Found</title>
   </head>
   <body>
-    <p>Sorry, but this page does not exist on our servers.</p>
+    <p>THIS SITE IS UNDER CONTRUCTION, PLEASE COME BACK LATER...</p>
   </body>
 </html>

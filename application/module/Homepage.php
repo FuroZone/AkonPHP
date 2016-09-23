@@ -7,6 +7,7 @@ class Homepage extends Module {
   }
   public function run() {
     $this->View->load("default");
+    $this->View->load("home");
   }
 }
 ?>
