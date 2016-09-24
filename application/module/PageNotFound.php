@@ -6,8 +6,9 @@ class PageNotFound extends Module {
     parent::__construct();
   }
   public function run() {
-    $this->View->load("default");
+    $this->View->load("template/header");
     $this->View->load("404");
+    $this->View->load("template/footer");
   }
 }
 ?>

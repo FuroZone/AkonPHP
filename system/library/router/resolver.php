@@ -31,10 +31,10 @@ class Resolver {
       if(sizeof($uri) <= $uri_id + 1) {
         return $pass[1];
       }else{
-        return $this->recurResolve($uri, $dir."/".$uri[$uri_id], $uri_id + 1);
+        return $this->recurResolve($uri, $dir."/".$uri[$uri_id], $type, $uri_id + 1);
       }
     }elseif($pass[0] == "udir") {
-        return $this->recurResolve($uri, $dir."/".$uri[$uri_id], $uri_id + 1);
+        return $this->recurResolve($uri, $dir."/".$uri[$uri_id], $type, $uri_id + 1);
     }elseif($uri_id)
     return false;
   }

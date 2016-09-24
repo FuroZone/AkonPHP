@@ -12,8 +12,12 @@ class View extends Resolver {
     }else{
       $route = $uri;
     }
-    include_once FILE_ROOT.$this->AppDirectory."/".$route.".php";
-    return true;
+    if(file_exists(FILE_ROOT.$this->AppDirectory."/".$route.".php")) {
+      include_once FILE_ROOT.$this->AppDirectory."/".$route.".php";
+      return true;
+    }
+    echo "View $route does not exist.";
+    return false;
   }
 }
 
@@ -22,16 +26,13 @@ class Module {
   // View resolver
   protected $View;
   
-  private $AppDirectory;
-  
   public function __construct() {
-    $this->AppDirectory = "application";
-    $this->View = new redefines\View($this->AppDirectory, array("view"));
+    $this->View = new redefines\View("application", array("view"));
     $this->run();
   }
   
-  public function get($uri) {
-    return $this->View->resolve($uri).".php";
+  public function title($t) {
+    echo "<title>$t</title>";
   }
 }
 ?>

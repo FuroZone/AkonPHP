@@ -1,9 +1,8 @@
 <?php
 
 ?>
-    <title>FuroZone: Under Construction</title>
-  </head>
-  <body>
-    <p>THIS SITE IS UNDER CONTRUCTION, PLEASE COME BACK LATER...</p>
+    <main>
+      <p>This site is under construction, please come back later...</p>
+    </main>
   </body>
 </html>

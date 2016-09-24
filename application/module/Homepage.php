@@ -6,8 +6,10 @@ class Homepage extends Module {
     parent::__construct();
   }
   public function run() {
-    $this->View->load("default");
+    $this->title("FuroZone: Under Construction");
+    $this->View->load("template/header");
     $this->View->load("home");
+    $this->View->load("template/footer");
   }
 }
 ?>
