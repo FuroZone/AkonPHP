@@ -1,7 +1,7 @@
 <?php
 // Uncomment if errors are needed
-#error_reporting(E_ALL);
-#ini_set('display_errors', true);
+error_reporting(E_ALL);
+ini_set('display_errors', true);
 
 // Load configuration files
 require_once dirname(__DIR__)."/config/general.php";

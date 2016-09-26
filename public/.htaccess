@@ -1,6 +1,5 @@
 deny from none
 allow from all
-
 RewriteEngine on
   # Check if .html file already exists -- if so, do nothing
   RewriteCond %{REQUEST_FILENAME} -f

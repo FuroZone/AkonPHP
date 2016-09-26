@@ -2,6 +2,19 @@
 namespace app;
 
 class Utility {
+  
+  public function pathExists($path) {
+    $dirname = dirname($path);
+    $filearr = glob($dirname . '/*', GLOB_NOSORT);
+    $fnlowcase = strtolower($path);
+    foreach($filearr as $f) {
+        if(strtolower($f) == $fnlowcase) {
+            return $f;
+        }
+    }
+    return false;
+  }
+  
   public function binarySearch($array, $key) {
     $sorted = $array;
     asort($sorted);

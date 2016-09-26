@@ -12,4 +12,7 @@ require_once "router/router.php";
 // Page design and user interaction
 require_once "module.php";
 require_once "service.php";
+
+// Redefines
+require_once "redefines/View.php";
 ?>

@@ -36,17 +36,24 @@ class Router {
     
   }
 	
-  public function loadPage($route = null) {
+  public function loadPage($route = null, $full = true) {
     if($route == null) {
       if($this->Page == null) {
         return false;
       }
       $route = $this->Page;
     }
-    $class = split("/", $route);
-    $class = $class[sizeof($class)-1];
-    include_once FILE_ROOT.$this->AppDirectory."/".$route.".php";
+    $class = preg_split("/[\/]/", $route);
+    $class = preg_split("/[\.]/", $class[sizeof($class)-1])[0];
+    if($full) {
+      include_once $route;
+    }else {
+      include_once FILE_ROOT.$this->AppDirectory."/".$route.".php";
+    }
+    $classes = get_declared_classes();
+    $class = $classes[sizeof($classes) - 1];
     $page = new $class();
+    $page->run();
     return true;
   }
   
@@ -63,6 +70,10 @@ class Router {
     $uri = substr($_SERVER["REQUEST_URI"], 1, $length);
     return $uri == null ? "homepage" : substr($_SERVER["REQUEST_URI"], 1, $length);
   }
+  
+  public function getFullPath($appfile) {
+    return FILE_ROOT.$this->AppDirectory."/".$appfile.".php";
+  }
 	
 	/*
 	 * WEB RESOLVER IMPLEMENTATION
@@ -73,9 +84,9 @@ class Router {
     }
     if(!$route = $this->getRoute($URI)) {
       if(!$route = $this->Resolver->resolve($URI)) {
-        $route = $this->Routes["default"];
+        $route = $this->getFullPath($this->Routes["default"]);
       }
-    }
+    }else $route = $this->getFullPath($route);
     $this->Page = $route;
     return $route;
 	}
