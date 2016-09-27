@@ -26,13 +26,13 @@ class Resolver {
       if(gettype($ret) != "integer" && $ret) {
         $current_page = $ret;
       }elseif(gettype($ret) == "integer"){
+		  ++$ret;
         while($ret < sizeof($parts)) {
-          if($ret++ == sizeof($parts)) {
-            array_push($_GET, $parts[$ret]);
+          if($ret+1 >= sizeof($parts)) {
+            array_push($_GET, $parts[$ret++]);
           }else{
-            $_GET[$parts[$ret]] = $parts[$ret];
+            $_GET[$parts[$ret++]] = $parts[$ret++];
           }
-          $ret += 2;
         }
       }
     }
